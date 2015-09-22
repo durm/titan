@@ -1,0 +1,23 @@
+{% extends "root.html" %}
+
+{% block body %}
+<div>
+    <h3>{% if unit %}{{ unit.name }}{% else %}New unit{% endif %}</h3>
+    <form action="." method="post">{% csrf_token %}
+        {% if unit %}
+            <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
+        {% endif %}
+        <ul>
+            <li>
+                <label>Name</label><br/>
+                <input type="text" name="name" required="required" {% if unit %}value="{{ unit.name }}"{% endif %}/> 
+            </li>
+            <li>
+                <label>Desc</label><br/>
+                <textarea name="desc">{% if unit %}{{ unit.desc }}{% endif %}</textarea>
+            </li>
+        </ul>
+        <input type="submit"/>
+    </form>
+</div>
+{% endblock %}

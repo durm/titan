@@ -1,0 +1,78 @@
+{% extends "root.html" %}
+
+{% block body %}
+<div>
+    <h3>{{ unit.name }}</h3>
+    {% if unit.desc %}
+        <p>{{ unit.desc }}</p>
+    {% endif %}
+    <form action="." method="post">{% csrf_token %}
+        <textarea name="content" required="required"></textarea>
+        <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
+        <select name="item_type" required="required">
+            <option></option>
+            {% for item_type in item_types %}
+                <option value="{{ item_type.0 }}">{{ item_type.0 }} - {{ item_type.1 }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit"/>
+    </form>
+    <div>
+        <table border="1" width="100%">
+            <tr>
+                <td width="20%" rowspan="2">
+                    {% with  item_type_name="KP" item_type_desc=item_types_dict.KP items=items.KP %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="20%">
+                    {% with  item_type_name="KA" item_type_desc=item_types_dict.KA items=items.KA %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="20%" rowspan="2">
+                    {% with  item_type_name="VP" item_type_desc=item_types_dict.VP items=items.VP %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="20%">
+                    {% with  item_type_name="CR" item_type_desc=item_types_dict.CR items=items.CR %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="20%" rowspan="2">
+                    {% with  item_type_name="CSt" item_type_desc=item_types_dict.CSt items=items.CSt %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+            </tr>
+            </tr>
+                <td width="20%">
+                    {% with  item_type_name="KR" item_type_desc=item_types_dict.KR items=items.KR %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="20%">
+                    {% with  item_type_name="CH" item_type_desc=item_types_dict.CH items=items.CH %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="1">
+            <tr>
+                <td width="50%">
+                    {% with  item_type_name="CSg" item_type_desc=item_types_dict.CSg items=items.CSg %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+                <td width="50%">
+                    {% with  item_type_name="RSt" item_type_desc=item_types_dict.RSt items=items.RSt %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
