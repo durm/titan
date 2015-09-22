@@ -84,7 +84,7 @@ try:
     
     db_conf = titan_db_conf.db_conf
 except:
-    pass
+    db_conf = None
 
 DATABASES = {
     'default': db_conf
