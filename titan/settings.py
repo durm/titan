@@ -75,11 +75,19 @@ WSGI_APPLICATION = 'titan.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+db_conf = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+}
+try:
+    import titan_db_conf
+    
+    db_conf = titan_db_conf.db_conf
+except:
+    pass
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': db_conf
 }
 
 
