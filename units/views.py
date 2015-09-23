@@ -2,7 +2,9 @@ from django.shortcuts import render_to_response, redirect
 from units.models import Unit, get_item_types, Item
 from django.template.context_processors import csrf
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def save(request, num=None):
     if request.method == 'GET':
         c = {"unit": Unit.objects.get(id=int(num)) if num is not None else None}
@@ -17,7 +19,8 @@ def save(request, num=None):
             unit = Unit(name=request.POST.get("name"), desc=request.POST.get("desc"))
         unit.save()
         return redirect(reverse(page, kwargs={"num": int(unit.id)}))
-    
+
+@login_required    
 def page(request, num=None):
     unit = Unit.objects.get(id=int(num))
     if request.method == 'GET':
