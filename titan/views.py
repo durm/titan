@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login
 from units.views import mylist
 
 def index(request):
+    if request.user.is_authenticated():
+        return redirect(reverse(mylist))
     return redirect(settings.LOGIN_URL)
 
 def register(request):
