@@ -43,3 +43,7 @@ def page(request, num=None):
         item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit)
         item.save()
         return redirect(reverse(page, kwargs={"num": int(unit.id)}))
+
+@login_required    
+def mylist(request):
+    return render_to_response("mylist.html", {})
