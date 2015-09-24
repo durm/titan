@@ -1,6 +1,6 @@
 {% extends "root.html" %}
 
-{% block body %}
+{% block content %}
 <div>
     <h3>{% if unit %}{{ unit.name }}{% else %}New unit{% endif %}</h3>
     <form action="." method="post">{% csrf_token %}
