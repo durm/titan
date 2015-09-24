@@ -3,4 +3,4 @@ from django.core.urlresolvers import reverse
 from titan import settings
 
 def index(request):
-    return redirect(login_page)
+    return redirect(settings.LOGIN_URL)
