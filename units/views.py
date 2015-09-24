@@ -10,7 +10,7 @@ def save(request, num=None):
     if request.method == 'GET':
         c = {"unit": Unit.objects.get(id=int(num)) if num is not None else None}
         c.update(csrf(request))
-        return render_to_response("save.html", c, context_instance=RequestContext(request)
+        return render_to_response("save.html", c, context_instance=RequestContext(request))
     elif request.method == 'POST':
         if "unit_id" in request.POST:
             unit = Unit.objects.get(id=int(request.POST["unit_id"]))
@@ -39,7 +39,7 @@ def page(request, num=None):
             "items": items
         }
         c.update(csrf(request))
-        return render_to_response("unit.html", c, context_instance=RequestContext(request)
+        return render_to_response("unit.html", c, context_instance=RequestContext(request))
     elif request.method == 'POST':
         item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit)
         item.save()
@@ -48,4 +48,4 @@ def page(request, num=None):
 @login_required    
 def mylist(request):
     mylist = Unit.objects.filter(created_by=request.user)
-    return render_to_response("mylist.html", {"mylist": mylist}, context_instance=RequestContext(request)
+    return render_to_response("mylist.html", {"mylist": mylist}, context_instance=RequestContext(request))

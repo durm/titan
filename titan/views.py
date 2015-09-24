@@ -27,4 +27,4 @@ def register(request):
         form = UserCreationForm()
     c = {'form': form}
     c.update(csrf(request))
-    return render_to_response("registration/register.html", c, context_instance=RequestContext(request)
+    return render_to_response("registration/register.html", c, context_instance=RequestContext(request))
