@@ -114,3 +114,6 @@ MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(os.path.dirname(BASE_DIR), "data")
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
+
+LOGIN_REDIRECT_URL = '/units/mylist/'
+LOGIN_URL = '/login/'
