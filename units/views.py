@@ -16,8 +16,9 @@ def save(request, num=None):
             unit = Unit.objects.get(id=int(request.POST["unit_id"]))
             unit.name = request.POST["name"]
             unit.desc = request.POST["desc"]
+            unit.updated_by = request.user
         else:
-            unit = Unit(name=request.POST.get("name"), desc=request.POST.get("desc"))
+            unit = Unit(name=request.POST.get("name"), desc=request.POST.get("desc"), created_by=request.user, updated_by=request.user)
         unit.save()
         return redirect(reverse(page, kwargs={"num": int(unit.id)}))
 

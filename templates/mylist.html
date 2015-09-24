@@ -5,6 +5,9 @@
 {% block content %}
 <div>
     <h3>My list</h3>
+    <p>
+        <a href="{% url 'save' %}">Create unit</a>
+    </p>
     <ul>
         {% for unit in mylist %}
         <li>
