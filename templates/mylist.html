@@ -6,7 +6,7 @@
     <ul>
         {% for unit in mylist %}
         <li>
-            <a href="{% url "units:page" num=unit.id %}">{{ unit.name }}</a>
+            <a href="{% url "page" unit.id %}">{{ unit.name }}</a>
         </li>
         {% endfor %}
     </ul>
