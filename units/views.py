@@ -42,7 +42,7 @@ def page(request, num=None):
         c.update(csrf(request))
         return render_to_response("unit.html", c, context_instance=RequestContext(request))
     elif request.method == 'POST':
-        item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit)
+        item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit, created_by=request.user, updated_by=request.user)
         item.save()
         return redirect(reverse(page, kwargs={"num": int(unit.id)}))
 
