@@ -12,14 +12,14 @@ def index(request):
 
 def register(request):
     if request.user.is_authenticated():
-        return redirect(mylist)
+        return redirect(reverse(mylist))
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
             new_user.backend = 'django.contrib.auth.backends.ModelBackend'
             login(request, new_user)
-            return redirect(mylist)
+            return redirect(reverse(mylist))
     else:
         form = UserCreationForm()
     c = {'form': form}
