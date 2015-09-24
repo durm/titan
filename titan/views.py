@@ -15,4 +15,4 @@ def register(request):
             return HttpResponseRedirect("/me/")
     else:
         form = UserCreationForm()
-    return render(request, "registration/register.html", {'form': form})
+    return render_to_response("registration/register.html", {'form': form})
