@@ -18,7 +18,7 @@ def get_item_types(lang="en"):
         return tuple(map(lambda x: tuple(x[2:]), ITEM_TYPES))
     return tuple(map(lambda x: tuple(x[:2]), ITEM_TYPES))
 
-class Unit(models.Model, Created, Updated):
+class Unit(models.Model):
     name = models.CharField(max_length=256, blank=False, null=False)
     desc = models.TextField()
     created_at = models.ForeignKey(User)
@@ -26,7 +26,7 @@ class Unit(models.Model, Created, Updated):
     updated_at = models.ForeignKey(User)
     updated_by = models.DateTimeField(auto_now=True)
 
-class Item(models.Model, Created, Updated):
+class Item(models.Model):
     content = models.TextField(null=False, blank=False)
     order = models.IntegerField(default=0, null=False, blank=False)
     item_type = models.CharField(max_length=3, choices=get_item_types(), null=False, blank=False)
