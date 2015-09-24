@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.template.context_processors import csrf
 from django.contrib.auth import authenticate, login
 from units.views import mylist
+from django.template import RequestContext
 
 def index(request):
     if request.user.is_authenticated():
@@ -26,4 +27,4 @@ def register(request):
         form = UserCreationForm()
     c = {'form': form}
     c.update(csrf(request))
-    return render_to_response("registration/register.html", c)
+    return render_to_response("registration/register.html", c, context_instance=RequestContext(request)
