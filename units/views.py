@@ -46,4 +46,5 @@ def page(request, num=None):
 
 @login_required    
 def mylist(request):
-    return render_to_response("mylist.html", {})
+    mylist = Unit.objects.filter(created_by=request.user)
+    return render_to_response("mylist.html", {"mylist": mylist})
