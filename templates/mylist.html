@@ -4,9 +4,11 @@
 <div>
     <h3>My list</h3>
     <ul>
+        {% for unit in mylist %}
         <li>
-            <a href=""></a>
+            <a href="{% url "units:page" num=unit.id %}">{{ unit.name }}</a>
         </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}
