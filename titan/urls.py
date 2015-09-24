@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^units/', include('units.urls')),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^register/', register, name="register"),
+    url(r'^$', index, name="index"),
 ]
