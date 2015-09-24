@@ -18,19 +18,13 @@ def get_item_types(lang="en"):
         return tuple(map(lambda x: tuple(x[2:]), ITEM_TYPES))
     return tuple(map(lambda x: tuple(x[:2]), ITEM_TYPES))
 
-class Created(models.Model):
+class Created():
     created_at = models.ForeignKey(User)
     created_by = models.DateTimeField(auto_now_add=True)
-    
-    class Meta:
-        abstract = True
         
-class Updated(models.Model):
+class Updated():
     updated_at = models.ForeignKey(User)
     updated_by = models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        abstract = True
 
 class Unit(models.Model, Created, Updated):
     name = models.CharField(max_length=256, blank=False, null=False)
