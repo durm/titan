@@ -35,4 +35,5 @@ class Item(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_by = models.ForeignKey(User, related_name="item_updated_by_user")
     updated_at = models.DateTimeField(auto_now=True)
+    color = models.CharField(max_length=7, null=True, blank=True)
 

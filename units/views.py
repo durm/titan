@@ -44,9 +44,18 @@ def page(request, num=None):
     elif request.method == 'POST':
         item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit, created_by=request.user, updated_by=request.user)
         item.save()
-    elif request.method == "DELETE":
-        items = Item.objects.filter(unit=unit, id__in=map(int, request.DELETE["item"]))
+        return redirect(reverse(page, kwargs={"num": int(unit.id)}))
+
+def act_items(request, num=None):
+    unit = Unit.objects.get(id=int(num))
+    act = request.POST["act"]
+    item_ids = request.POST.getlist("unit")
+    color = request.POST["color"]
+    items = Item.objects.filter(unit=unit, id__in=map(int, item_ids))
+    if act == "delete":
         items.delete()
+    elif act == "colorize":
+        items.update(color=color)
     return redirect(reverse(page, kwargs={"num": int(unit.id)}))
 
 @login_required    

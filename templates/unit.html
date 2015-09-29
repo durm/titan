@@ -18,8 +18,14 @@
         <input type="submit"/>
     </form>
     <div>
-        <form action="" method="delete">
-            <input type="submit" value="Delete"/>
+        <form action="{% url 'act_items' num=unit.id %}" method="post">
+            <select name="act" required="required">
+                <option></option>
+                <option value="colorize">Colorize</option>
+                <option value="delete">Delete</option>
+            </select>
+            <input type="color" name="color"/>
+            <input type="submit"/>
             <table border="1" width="100%">
                 <tr>
                     <td width="20%" rowspan="2">
@@ -114,6 +120,7 @@
     
     .units {
         list-style: none;
+        margin-left: 0px;
     }
 </style>
 {% endblock %}
