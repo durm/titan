@@ -21,35 +21,35 @@
         <table border="1" width="100%">
             <tr>
                 <td width="20%" rowspan="2">
-                    <div style="min-height: 600px;">
+                    <div class="large">
                     {% with  item_type_name="KP" item_type_desc=item_types_dict.KP items=items.KP %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="20%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="KA" item_type_desc=item_types_dict.KA items=items.KA %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="20%" rowspan="2">
-                    <div style="min-height: 600px;">
+                    <div class="large">
                     {% with  item_type_name="VP" item_type_desc=item_types_dict.VP items=items.VP %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="20%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="CR" item_type_desc=item_types_dict.CR items=items.CR %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="20%" rowspan="2">
-                    <div style="min-height: 600px;">
+                    <div class="large">
                     {% with  item_type_name="CSt" item_type_desc=item_types_dict.CSt items=items.CSt %}
                         {% include "item_block.html" %}
                     {% endwith %}
@@ -58,14 +58,14 @@
             </tr>
             </tr>
                 <td width="20%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="KR" item_type_desc=item_types_dict.KR items=items.KR %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="20%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="CH" item_type_desc=item_types_dict.CH items=items.CH %}
                         {% include "item_block.html" %}
                     {% endwith %}
@@ -76,14 +76,14 @@
         <table width="100%" border="1">
             <tr>
                 <td width="50%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="CSg" item_type_desc=item_types_dict.CSg items=items.CSg %}
                         {% include "item_block.html" %}
                     {% endwith %}
                     </div>
                 </td>
                 <td width="50%">
-                    <div style="min-height: 300px;">
+                    <div class="small">
                     {% with  item_type_name="RSt" item_type_desc=item_types_dict.RSt items=items.RSt %}
                         {% include "item_block.html" %}
                     {% endwith %}
@@ -93,4 +93,16 @@
         </table>
     </div>
 </div>
+{% endblock %}
+
+{% block libs %}
+<style>
+    .small {
+        min-height: 200px;
+    }
+    
+    .large {
+        min-height: 400px;
+    }
+</style>
 {% endblock %}
