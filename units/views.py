@@ -45,7 +45,7 @@ def page(request, num=None):
         item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit, created_by=request.user, updated_by=request.user)
         item.save()
     elif request.method == "DELETE":
-        items = Item.objects.filter(unit=unit, id__in=request.DELETE["item"])
+        items = Item.objects.filter(unit=unit, id__in=map(int, request.DELETE["item"]))
         items.delete()
     return redirect(reverse(page, kwargs={"num": int(unit.id)}))
 
