@@ -1,8 +1,10 @@
 <div>
-    <h4 title="{{ item_type_desc }}">{{ item_type_name }}</h4>
+    <h4 class="h" title="{{ item_type_name }} - {{ item_type_desc }}">{{ item_type_desc }}</h4>
     <ul>
         {% for item in items %}
-            <li>{{ item.content }}</li>
+            <li>
+                <label for="item_{{ item.id }}"><input type="checkbox" name="item" value="{{ item.id }}"/> {{ item.content }}</label>
+            </li>
         {% endfor %}
     </ul>
 </div>
