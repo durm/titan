@@ -44,7 +44,10 @@ def page(request, num=None):
     elif request.method == 'POST':
         item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit, created_by=request.user, updated_by=request.user)
         item.save()
-        return redirect(reverse(page, kwargs={"num": int(unit.id)}))
+    elif request.method == "DELETE":
+        items = Item.objects.filter(unit=unit, id__in=request.DELETE["item"])
+        items.delete()
+    return redirect(reverse(page, kwargs={"num": int(unit.id)}))
 
 @login_required    
 def mylist(request):

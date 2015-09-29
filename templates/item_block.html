@@ -1,6 +1,6 @@
 <div>
     <h4 class="h" title="{{ item_type_name }} - {{ item_type_desc }}">{{ item_type_desc }}</h4>
-    <ul>
+    <ul class="units">
         {% for item in items %}
             <li>
                 <label for="item_{{ item.id }}"><input type="checkbox" name="item" value="{{ item.id }}"/> {{ item.content }}</label>
