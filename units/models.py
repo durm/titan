@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-ITEM_TYPES = (
+ITEM_TYPES =  (
     ("KA", "Key Activities", "КД", "Ключевые виды деятельности"),
     ("KP", "Key Partners", "КП", "Ключевые партнеры"),
     ("KR", "Key Resources", "КР", "Ключевые ресурсы"),
