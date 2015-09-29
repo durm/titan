@@ -18,7 +18,7 @@
         <input type="submit"/>
     </form>
     <div>
-        <form action="{% url 'act_items' num=unit.id %}" method="post">
+        <form action="{% url 'act_items' num=unit.id %}" method="post">{% csrf_token %}
             <select name="act" required="required">
                 <option></option>
                 <option value="colorize">Colorize</option>
