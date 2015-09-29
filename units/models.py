@@ -21,19 +21,19 @@ def get_item_types(lang="en"):
 class Unit(models.Model):
     name = models.CharField(max_length=256, blank=False, null=False)
     desc = models.TextField()
-    created_by = models.ForeignKey(User, related_name="unit_created_by_user")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_by = models.ForeignKey(User, related_name="unit_updated_by_user")
-    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, related_name="unit_created_by_user", blank=False, null=False)
+    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
+    updated_by = models.ForeignKey(User, related_name="unit_updated_by_user", blank=False, null=False)
+    updated_at = models.DateTimeField(auto_now=True, blank=False, null=False)
 
 class Item(models.Model):
     content = models.TextField(null=False, blank=False)
     order = models.IntegerField(default=0, null=False, blank=False)
     item_type = models.CharField(max_length=3, choices=get_item_types(), null=False, blank=False)
     unit = models.ForeignKey(Unit, null=False, blank=False)
-    created_by = models.ForeignKey(User, related_name="item_created_by_user")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_by = models.ForeignKey(User, related_name="item_updated_by_user")
-    updated_at = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(User, related_name="item_created_by_user", blank=False, null=False)
+    created_at = models.DateTimeField(auto_now_add=True, blank=False, null=False)
+    updated_by = models.ForeignKey(User, related_name="item_updated_by_user", blank=False, null=False)
+    updated_at = models.DateTimeField(auto_now=True, blank=False, null=False)
     color = models.CharField(max_length=7, null=True, blank=True)
 
