@@ -3,7 +3,7 @@
     <ul class="units">
         {% for item in items %}
             <li>
-                <label for="item_{{ item.id }}"><input id="item_{{ item.id }}" type="checkbox" name="item" value="{{ item.id }}"/> {{ item.content }}</label>
+                <label for="item_{{ item.id }}" {% if item.color %}style="background-color: {{ item.color }};"{% endif %}><input id="item_{{ item.id }}" type="checkbox" name="item" value="{{ item.id }}"/> {{ item.content }}</label>
             </li>
         {% endfor %}
     </ul>
