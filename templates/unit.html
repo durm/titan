@@ -6,26 +6,29 @@
     {% if unit.desc %}
         <p>{{ unit.desc }}</p>
     {% endif %}
-    <form action="." method="post">{% csrf_token %}
-        <textarea name="content" required="required"></textarea>
-        <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
-        <select name="item_type" required="required">
-            <option></option>
-            {% for item_type in item_types %}
-                <option value="{{ item_type.0 }}">{{ item_type.0 }} - {{ item_type.1 }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit"/>
+    <form action="." method="post" class="pure-form pure-form-stacked">
+        <fieldset>{% csrf_token %}
+            <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
+            <select name="item_type" required="required">
+                <option></option>
+                {% for item_type in item_types %}
+                    <option value="{{ item_type.0 }}">{{ item_type.0 }} - {{ item_type.1 }}</option>
+                {% endfor %}
+            </select>
+            <textarea name="content" required="required" placeholder="Item"></textarea>
+            <input type="submit" class="pure-button pure-button-primary"/>
+        </fieldset>
     </form>
     <div>
-        <form action="{% url 'act_items' num=unit.id %}" method="post">{% csrf_token %}
+        <form action="{% url 'act_items' num=unit.id %}" method="post" class="pure-form">
+    <fieldset>{% csrf_token %}
             <select name="act" required="required">
                 <option></option>
                 <option value="colorize">Colorize</option>
                 <option value="delete">Delete</option>
             </select>
             <input type="color" name="color"/>
-            <input type="submit"/>
+            <input type="submit" class="pure-button"/>
             <table border="1" width="100%">
                 <tr>
                     <td width="20%" rowspan="2">
@@ -99,6 +102,7 @@
                     </td>
                 </tr>
             </table>
+            </fieldset>
         </form>
     </div>
 </div>
