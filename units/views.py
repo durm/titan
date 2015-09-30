@@ -49,7 +49,7 @@ def page(request, num=None):
 def act_items(request, num=None):
     unit = Unit.objects.get(id=int(num))
     act = request.POST["act"]
-    item_ids = request.POST.getlist("unit")
+    item_ids = request.POST.getlist("item")
     color = request.POST["color"]
     items = Item.objects.filter(unit=unit, id__in=map(int, item_ids))
     if act == "delete":
