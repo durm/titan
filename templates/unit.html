@@ -5,10 +5,12 @@
     {% if unit.desc %}
         <p>{{ unit.desc }}</p>
     {% endif %}
+    <form id="form" action="." method="post" class="pure-form">
+            <fieldset>
     <button class="pure-button" onclick="del_items()" style="float: right;">Delete</button>
     <input type="color" name="color"/><button class="pure-button" onclick="colorize_items()">Colorize</button>
     <div>
-        <form id="form" action="." method="post">
+        
         <table border="1" width="100%">
             <tr>
                 <td width="20%" rowspan="2">
@@ -89,6 +91,7 @@
         <input type="hidden" name="content"/>
         <input type="hidden" name="act"/>
         <input type="hidden" name="item_type"/>
+        </fieldset>
     </form>
 </div>
 {% endblock %}
@@ -130,10 +133,11 @@
 </style>
 
 <script>
+    var form = $("#form");
+    
     function add_item(t) {
         var item = prompt("Input item text here")
         if (item != "" && item != null) {
-            var form = $("#form")
             form.find("input[name=content]").val(item)
             form.find("input[name=item_type]").val(t)
             form.submit()
