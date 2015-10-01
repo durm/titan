@@ -138,21 +138,28 @@
         function add_item(t) {
             var item = prompt("Input item text here")
             if (item != "" && item != null) {
+                form.attr("action", ".")
                 form.find("input[name=content]").val(item)
                 form.find("input[name=item_type]").val(t)
-                form.submit()
+                console.log(form.attr("action"))
+                console.log(form.serialize())
+                //form.submit()
             }
         };
         
         function del_items() {
                 form.attr("action", "{% url 'act_items' num=unit.id %}")
                 form.find("input[name=act]").val("delete")
-                form.submit()
+                console.log(form.attr("action"))
+                console.log(form.serialize())
+                //form.submit()
         };
         
         function colorize_items() {
                 form.attr("action", "{% url 'act_items' num=unit.id %}")
                 form.find("input[name=act]").val("colorize")
+                console.log(form.attr("action"))
+                console.log(form.serialize())
                 form.submit()
         };
 </script>
