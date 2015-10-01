@@ -10,7 +10,10 @@
     <ul class="items {{ item_type_name }}">
         {% for item in items %}
             <li {% if item.color %}style="background-color: {{ item.color }};"{% endif %}>
-                <label><input id="item_{{ item.id }}" type="checkbox" name="item" value="{{ item.id }}"/> {{ item.created_by.username }}: {{ item.content.split|join:"_"|markdown }}</label>
+                <input id="item_{{ item.id }}" type="checkbox" name="item" value="{{ item.id }}"/> 
+                {% with item.created_by.username|add:": "|add:item.content as message %}
+                    {{ message|markdown }}
+                {% endwith %}
             </li>
         {% endfor %}
     </ul>
