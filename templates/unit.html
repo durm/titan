@@ -1,6 +1,6 @@
 {% extends "root.html" %}
 
-{% block title %}{{ unit.name }}{% endblock %}
+{% block title %}{{ unit.created_by.username }}: {{ unit.name }}{% endblock %}
 
 {% block content %}
 <div>
