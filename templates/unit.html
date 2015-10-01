@@ -7,10 +7,10 @@
     {% endif %}
     <form id="form" action="." method="post" class="pure-form">
             <fieldset>
-    <button class="pure-button" onclick="del_items()" style="float: right;">Delete</button>
-    <input type="color" name="color"/><button class="pure-button" onclick="colorize_items()">Colorize</button>
-    <div>
-        
+    
+    <input type="color" name="color" onchange="colorize_items()" style="margin-right: 10px;"/>
+    <button class="pure-button" onclick="del_items()">Delete</button>
+    <div style="margin-top: 5px;">
         <table border="1" width="100%">
             <tr>
                 <td width="20%" rowspan="2">
@@ -85,8 +85,6 @@
             </tr>
         </table>
     </div>
-
-    
         {% csrf_token %}
         <input type="hidden" name="content"/>
         <input type="hidden" name="act"/>
@@ -145,11 +143,13 @@
     };
     
     function del_items() {
+            form.attr("action", "{% url 'act_items' num=unit.id %}")
             form.find("input[name=act]").val("delete")
             form.submit()
     };
     
     function colorize_items() {
+            form.attr("action", "{% url 'act_items' num=unit.id %}")
             form.find("input[name=act]").val("colorize")
             form.submit()
     };
