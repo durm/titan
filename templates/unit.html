@@ -131,28 +131,29 @@
 </style>
 
 <script>
-    var form = $("#form");
-    
-    function add_item(t) {
-        var item = prompt("Input item text here")
-        if (item != "" && item != null) {
-            form.find("input[name=content]").val(item)
-            form.find("input[name=item_type]").val(t)
-            form.submit()
-        }
-    };
-    
-    function del_items() {
-            form.attr("action", "{% url 'act_items' num=unit.id %}")
-            form.find("input[name=act]").val("delete")
-            form.submit()
-    };
-    
-    function colorize_items() {
-            form.attr("action", "{% url 'act_items' num=unit.id %}")
-            form.find("input[name=act]").val("colorize")
-            form.submit()
-    };
-    
+    $(document).ready(function(){
+        var form = $("#form");
+        
+        function add_item(t) {
+            var item = prompt("Input item text here")
+            if (item != "" && item != null) {
+                form.find("input[name=content]").val(item)
+                form.find("input[name=item_type]").val(t)
+                form.submit()
+            }
+        };
+        
+        function del_items() {
+                form.attr("action", "{% url 'act_items' num=unit.id %}")
+                form.find("input[name=act]").val("delete")
+                form.submit()
+        };
+        
+        function colorize_items() {
+                form.attr("action", "{% url 'act_items' num=unit.id %}")
+                form.find("input[name=act]").val("colorize")
+                form.submit()
+        };
+    });
 </script>
 {% endblock %}
