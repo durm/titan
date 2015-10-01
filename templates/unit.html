@@ -6,105 +6,87 @@
     {% if unit.desc %}
         <p>{{ unit.desc }}</p>
     {% endif %}
-    <form action="." method="post" class="pure-form pure-form-stacked">
-        <fieldset>{% csrf_token %}
-            <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
-            <select name="item_type" required="required">
-                <option></option>
-                {% for item_type in item_types %}
-                    <option value="{{ item_type.0 }}">{{ item_type.0 }} - {{ item_type.1 }}</option>
-                {% endfor %}
-            </select>
-            <textarea name="content" required="required" placeholder="Item"></textarea>
-            <input type="submit" class="pure-button pure-button-primary"/>
-        </fieldset>
-    </form>
     <div>
-        <form action="{% url 'act_items' num=unit.id %}" method="post" class="pure-form">
-    <fieldset>{% csrf_token %}
-            <select name="act" required="required">
-                <option></option>
-                <option value="colorize">Colorize</option>
-                <option value="delete">Delete</option>
-            </select>
-            <input type="color" name="color"/>
-            <input type="submit" class="pure-button"/>
-            <table border="1" width="100%">
-                <tr>
-                    <td width="20%" rowspan="2">
-                        <div class="large">
-                        {% with  item_type_name="KP" item_type_desc=item_types_dict.KP items=items.KP %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="20%">
-                        <div class="small">
-                        {% with  item_type_name="KA" item_type_desc=item_types_dict.KA items=items.KA %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="20%" rowspan="2">
-                        <div class="large">
-                        {% with  item_type_name="VP" item_type_desc=item_types_dict.VP items=items.VP %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="20%">
-                        <div class="small">
-                        {% with  item_type_name="CR" item_type_desc=item_types_dict.CR items=items.CR %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="20%" rowspan="2">
-                        <div class="large">
-                        {% with  item_type_name="CSt" item_type_desc=item_types_dict.CSt items=items.CSt %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                </tr>
-                </tr>
-                    <td width="20%">
-                        <div class="small">
-                        {% with  item_type_name="KR" item_type_desc=item_types_dict.KR items=items.KR %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="20%">
-                        <div class="small">
-                        {% with  item_type_name="CH" item_type_desc=item_types_dict.CH items=items.CH %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <table width="100%" border="1">
-                <tr>
-                    <td width="50%">
-                        <div class="small">
-                        {% with  item_type_name="CSg" item_type_desc=item_types_dict.CSg items=items.CSg %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                    <td width="50%">
-                        <div class="small">
-                        {% with  item_type_name="RSt" item_type_desc=item_types_dict.RSt items=items.RSt %}
-                            {% include "item_block.html" %}
-                        {% endwith %}
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            </fieldset>
-        </form>
+        <table border="1" width="100%">
+            <tr>
+                <td width="20%" rowspan="2">
+                    <div class="large">
+                    {% with  item_type_name="KP" item_type_desc=item_types_dict.KP items=items.KP %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="20%">
+                    <div class="small">
+                    {% with  item_type_name="KA" item_type_desc=item_types_dict.KA items=items.KA %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="20%" rowspan="2">
+                    <div class="large">
+                    {% with  item_type_name="VP" item_type_desc=item_types_dict.VP items=items.VP %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="20%">
+                    <div class="small">
+                    {% with  item_type_name="CR" item_type_desc=item_types_dict.CR items=items.CR %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="20%" rowspan="2">
+                    <div class="large">
+                    {% with  item_type_name="CSt" item_type_desc=item_types_dict.CSt items=items.CSt %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+            </tr>
+            </tr>
+                <td width="20%">
+                    <div class="small">
+                    {% with  item_type_name="KR" item_type_desc=item_types_dict.KR items=items.KR %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="20%">
+                    <div class="small">
+                    {% with  item_type_name="CH" item_type_desc=item_types_dict.CH items=items.CH %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" border="1">
+            <tr>
+                <td width="50%">
+                    <div class="small">
+                    {% with  item_type_name="CSg" item_type_desc=item_types_dict.CSg items=items.CSg %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+                <td width="50%">
+                    <div class="small">
+                    {% with  item_type_name="RSt" item_type_desc=item_types_dict.RSt items=items.RSt %}
+                        {% include "item_block.html" %}
+                    {% endwith %}
+                    </div>
+                </td>
+            </tr>
+        </table>
     </div>
+
+    <form id="form" action="." method="post">
+        {% csrf_token %}
+        <input type="hidden" name="content"/>
+        <input type="hidden" name="item_type"/>
+    </form>
 </div>
 {% endblock %}
 
@@ -127,4 +109,15 @@
         margin-left: 0px;
     }
 </style>
+<script>
+    function add_item(t) {
+        var item = prompt("Input item text here")
+        if (item != "" and item != null) {
+            var form = $("#form")
+            form.find("input[name=content]").val(item)
+            form.find("input[name=item_type]").val(t)
+            form.submit()
+        }
+    };
+</script>
 {% endblock %}
