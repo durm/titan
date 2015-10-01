@@ -133,33 +133,28 @@
 </style>
 
 <script>
-        var form = $("#form");
-        
         function add_item(t) {
             var item = prompt("Input item text here")
             if (item != "" && item != null) {
+                var form = $("#form");
                 form.attr("action", ".")
                 form.find("input[name=content]").val(item)
                 form.find("input[name=item_type]").val(t)
-                console.log(form.attr("action"))
-                console.log(form.serialize())
-                //form.submit()
+                form.submit()
             }
         };
         
         function del_items() {
+                var form = $("#form");
                 form.attr("action", "{% url 'act_items' num=unit.id %}")
                 form.find("input[name=act]").val("delete")
-                console.log(form.attr("action"))
-                console.log(form.serialize())
-                //form.submit()
+                form.submit()
         };
         
         function colorize_items() {
+                var form = $("#form");
                 form.attr("action", "{% url 'act_items' num=unit.id %}")
                 form.find("input[name=act]").val("colorize")
-                console.log(form.attr("action"))
-                console.log(form.serialize())
                 form.submit()
         };
 </script>
