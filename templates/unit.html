@@ -108,11 +108,28 @@
         list-style: none;
         margin-left: 0px;
     }
+    
+    .button-xsmall {
+        font-size: 70%;
+    }
+
+    .button-small {
+        font-size: 85%;
+    }
+
+    .button-large {
+        font-size: 110%;
+    }
+
+    .button-xlarge {
+        font-size: 125%;
+    }
 </style>
+
 <script>
     function add_item(t) {
         var item = prompt("Input item text here")
-        if (item != "" and item != null) {
+        if (item != "" && item != null) {
             var form = $("#form")
             form.find("input[name=content]").val(item)
             form.find("input[name=item_type]").val(t)
