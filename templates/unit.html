@@ -2,11 +2,13 @@
 
 {% block content %}
 <div>
-    <h3>{{ unit.name }}</h3>
     {% if unit.desc %}
         <p>{{ unit.desc }}</p>
     {% endif %}
+    <button class="pure-button" onclick="del_items()" style="float: right;">Delete</button>
+    <input type="color" name="color"/><button class="pure-button" onclick="colorize_items()">Colorize</button>
     <div>
+        <form id="form" action="." method="post">
         <table border="1" width="100%">
             <tr>
                 <td width="20%" rowspan="2">
@@ -82,9 +84,10 @@
         </table>
     </div>
 
-    <form id="form" action="." method="post">
+    
         {% csrf_token %}
         <input type="hidden" name="content"/>
+        <input type="hidden" name="act"/>
         <input type="hidden" name="item_type"/>
     </form>
 </div>
@@ -135,6 +138,16 @@
             form.find("input[name=item_type]").val(t)
             form.submit()
         }
+    };
+    
+    function del_items() {
+            form.find("input[name=act]").val("delete")
+            form.submit()
+    };
+    
+    function colorize_items() {
+            form.find("input[name=act]").val("colorize")
+            form.submit()
     };
 </script>
 {% endblock %}
