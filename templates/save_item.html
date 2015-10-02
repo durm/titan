@@ -19,9 +19,7 @@
         <select name="item_type" required="required">
             <option></option>
             {% for item_type in item_types %}
-                {% with item and item.item_type == item_type.0 as lr %}
-                <option value="{{ item_type.0 }}" {% if lr or itype == item_type.0 %}checked="checked"{% endif %}>{{ item_type.0 }} - {{ item_type.1 }}</option>
-                {% endwith %}
+                <option value="{{ item_type.0 }}" {% if item and item.item_type == item_type.0 or itype == item_type.0 %}checked="checked"{% endif %}>{{ item_type.0 }} - {{ item_type.1 }}</option>
             {% endfor %}
         </select>
         
