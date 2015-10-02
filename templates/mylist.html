@@ -3,16 +3,15 @@
 {% block title %}My list{% endblock %}
 
 {% block content %}
-<div>
-    <h3>My list</h3>
-    <p>
-        <a href="{% url 'save' %}">Create unit</a>
-    </p>
-    <ul>
+<div class="pure-menu custom-restricted-width">
+    <div class="pure-menu pure-menu-horizontal">
+        <a class="pure-menu-heading pure-menu-link" href="{% url 'save' %}">Create unit</a>
+    </div>
+    <span class="pure-menu-heading">My list</span>
+
+    <ul class="pure-menu-list">
         {% for unit in mylist %}
-        <li>
-            <a href="{% url 'page' unit.id %}">{{ unit.name }}</a>
-        </li>
+        <li class="pure-menu-item"><a href="{% url 'page' unit.id %}" class="pure-menu-link">@{{ unit.created_by.username }}: {{ unit.name }}</a></li>
         {% endfor %}
     </ul>
 </div>
