@@ -1,5 +1,5 @@
 <div style="padding: 0 5px;" class="{{ cl }}">
-    <a class="button-xsmall pure-button" href="{% url 'save_item' unit_id=unit.id item_id=None %}?item_type={{ item_type_name }}" style="float:right;">+</a>
+    <a class="button-xsmall pure-button" href="{% url 'save_item' unit_id=unit.id %}?item_type={{ item_type_name }}" style="float:right;">+</a>
     <h4 class="h" title="{{ item_type_name }} - {{ item_type_desc }}">{{ item_type_desc }}</h4>
     <ul class="items {{ item_type_name }}">
         {% for item in items %}
