@@ -26,6 +26,10 @@
         <label>Content</label>
         <textarea name="content" required="required">{% if item %}{{ item.content }}{% endif %}</textarea>
         
+        <label>
+        <input type="checkbox" name="set_color" value="1"/> Set color
+        </label>
+        
         <label>Color</label>
         <input type="color" name="color" value="{% if item %}{{ item.color }}{% endif %}"/>
         

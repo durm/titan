@@ -84,6 +84,7 @@ def save_item(request, unit_id=None, item_id=None):
             item = Item.objects.get(id=int(item_id), unit=unit)
             item.item_type = request.POST.get("item_type")
             item.content = request.POST.get("content")
-            item.color = request.POST.get("color")
+            if request.POST.get("set_color") == "1":
+                item.color = request.POST.get("color")
         item.save()
         return redirect(reverse(page, kwargs={"num": int(unit.id)}))
