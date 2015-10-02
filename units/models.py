@@ -15,7 +15,7 @@ ITEM_TYPES =  (
 
 def get_item_types(lang="en"):
     if lang == "ru":
-        return tuple(map(lambda x: tuple(x[2:]), ITEM_TYPES))
+        return tuple(map(lambda x: tuple(x[0], x[2:]), ITEM_TYPES))
     return tuple(map(lambda x: tuple(x[:2]), ITEM_TYPES))
 
 class Unit(models.Model):

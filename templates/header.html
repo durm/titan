@@ -1,9 +1,11 @@
 {% if user.is_authenticated %}
     <div class="pure-menu pure-menu-horizontal">
+        <a href="{% url 'logout' %}?next={% url 'mylist' %}" class="pure-menu-heading pure-menu-link">Logout</a>
         <a href="{% url 'mylist' %}" class="pure-menu-heading pure-menu-link">My list</a>
+        
         {% if unit %}
             <a href="{% url 'save_unit' num=unit.id %}" class="pure-menu-heading pure-menu-link">@{{ unit.created_by.username }}: {{ unit.name }}</a>
         {% endif %}
-        <a href="{% url 'logout' %}?next={% url 'mylist' %}" class="pure-menu-heading pure-menu-link">Logout</a>
+        
     </div>
 {% endif %}

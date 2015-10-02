@@ -62,3 +62,28 @@ def act_items(request, num=None):
 def mylist(request):
     mylist = Unit.objects.filter(created_by=request.user)
     return render_to_response("mylist.html", {"mylist": mylist}, context_instance=RequestContext(request))
+
+@login_required    
+def save_item(request, unit_id=None, item_id=None):
+    unit = Unit.objects.get(id=int(unit_id))
+    if request.method == 'GET':
+        item = Item.objects.get(id=int(item_id)) if item_id is not None else None
+        item_types = get_item_types()
+        c = {
+            "unit": unit,
+            "item_types": item_types,
+            "item": item,
+            "itype": request.GET.get("item_type")
+        }
+        c.update(csrf(request))
+        return render_to_response("save_item.html", c, context_instance=RequestContext(request))
+    elif request.method == 'POST':
+        if item_id is None:
+            item = Item(content=request.POST.get("content"), item_type=request.POST.get("item_type"), unit=unit, created_by=request.user, updated_by=request.user)
+        else:
+            item = Item.objects.get(id=int(item_id), unit=unit)
+            item.item_type = request.POST.get("item_type")
+            item.content = request.POST.get("content")
+            item.color = request.POST.get("color")
+        item.save()
+        return redirect(reverse(page, kwargs={"num": int(unit.id)}))
