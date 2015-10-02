@@ -1,23 +1,28 @@
 {% extends "root.html" %}
 
 {% block content %}
-<div>
-    <h3>{% if unit %}{{ unit.name }}{% else %}New unit{% endif %}</h3>
-    <form action="." method="post">{% csrf_token %}
+<form class="pure-form pure-form-stacked" action="." method="post">
+    <fieldset>
+        <legend>
+            {% if unit %}
+                {% with unit as obj %}
+                    {% include "objname.html" %}
+                {% endwith %}
+            {% else %}
+                New unit
+            {% endif %}
+        </legend>
+        {% csrf_token %}
         {% if unit %}
             <input type="hidden" name="unit_id" value="{{ unit.id }}"/>
         {% endif %}
-        <ul>
-            <li>
-                <label>Name</label><br/>
-                <input type="text" name="name" required="required" {% if unit %}value="{{ unit.name }}"{% endif %}/> 
-            </li>
-            <li>
-                <label>Desc</label><br/>
-                <textarea name="desc">{% if unit %}{{ unit.desc }}{% endif %}</textarea>
-            </li>
-        </ul>
+        <label>Name</label>
+        <input type="text" name="name" required="required" {% if unit %}value="{{ unit.name }}"{% endif %}/> 
+        
+        <label>Desc</label>
+        <textarea name="desc">{% if unit %}{{ unit.desc }}{% endif %}</textarea>
+        
         <input type="submit"/>
-    </form>
-</div>
+    </fieldset>
+</form>
 {% endblock %}
