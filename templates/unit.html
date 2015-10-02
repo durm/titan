@@ -1,12 +1,11 @@
 {% extends "root.html" %}
 
+{% load markdown_deux_tags %}
+
 {% block title %}@{{ unit.created_by.username }}: {{ unit.name }}{% endblock %}
 
 {% block content %}
 <div>
-    {% if unit.desc %}
-        <p>{{ unit.desc }}</p>
-    {% endif %}
     <form id="form" action="." method="post" class="pure-form">
         <fieldset>
             <input id="colorinput" type="color" name="color" style="margin-right: 10px;" onchange="colorize_items()"/>
@@ -74,6 +73,10 @@
         <input type="hidden" name="item_type"/>
         </fieldset>
     </form>
+    {% if unit.desc %}
+        <h3>Desc</h3>
+        {{ unit.desc|markdown }}
+    {% endif %}
 </div>
 {% endblock %}
 
@@ -119,17 +122,6 @@
 </style>
 
 <script>
-        function add_item(t) {
-            var item = prompt("Input item text here")
-            if (item != "" && item != null) {
-                var form = $("#form");
-                form.attr("action", ".")
-                form.find("input[name=content]").val(item)
-                form.find("input[name=item_type]").val(t)
-                form.submit()
-            }
-        };
-        
         function del_items() {
                 var form = $("#form");
                 form.attr("action", "{% url 'act_items' num=unit.id %}")
