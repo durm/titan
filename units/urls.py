@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     url(r'^unit(?P<num>[0-9]+)/$', page, name="page"),
     url(r'^unit(?P<num>[0-9]+)/act_items/$', act_items, name="act_items"),
     url(r'^mylist/$', mylist, name="mylist"),
-    url(r'^/unit(?P<unit_id>[0-9]+)/save_item/$', save_item, name="save_item"),
-    url(r'^/unit(?P<unit_id>[0-9]+)/save_item/item(?P<item_id>[0-9]+)/$', save_item, name="update_item"),
+    url(r'^add_item_to_unit(?P<unit_id>[0-9]+)/$', save_item, name="save_item"),
+    url(r'^update_item_(?P<item_id>[0-9]+)_on_unit(?P<unit_id>[0-9]+)/$', save_item, name="update_item"),
 )
 
